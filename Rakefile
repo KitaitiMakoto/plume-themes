@@ -1,3 +1,5 @@
+require "rake/clean"
+
 RSASS = File.join(Dir.home, ".cargo/bin/rsass")
 
 def def_theme_task(src_file)
@@ -28,6 +30,7 @@ end
 THEME_FILES = FileList["src/*/*.s{a,c}ss"].exclude("src/*/_*")
 DEST = "dist"
 directory DEST
+CLEAN.include DEST
 
 theme_tasks = THEME_FILES.collect {|src_file| def_theme_task(src_file)}
 desc "Build all themes"
