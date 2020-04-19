@@ -1,6 +1,6 @@
 require "rake/clean"
 
-RSASS = File.join(Dir.home, ".cargo/bin/rsass")
+RSASS = ENV["RSASS"] || File.join(Dir.home, ".cargo/bin/rsass")
 
 def def_theme_tasks(src_dir)
   src_files = FileList["#{src_dir}/*.s{a,c}ss"].exclude("#{src_dir}/_*")
