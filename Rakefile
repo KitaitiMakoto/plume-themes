@@ -19,7 +19,6 @@ def def_theme_file_task(src_file)
   src_assets = FileList["#{src_dir}/**/*"].exclude("**/*/*.s{a,c}ss").select {|asset|
     File.file?(asset)
   }
-puts src_assets
   theme_assets = src_assets.collect {|src_asset|
     theme_asset = src_asset.pathmap("%{^#{src_dir},#{DEST}/#{theme}}p")
     asset_dir = theme_asset.pathmap("%d")
