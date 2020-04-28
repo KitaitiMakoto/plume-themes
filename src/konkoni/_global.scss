@@ -505,6 +505,10 @@ figure {
     max-width: 90vw;
   }
 
+  body > main > *, .h-feed > * {
+    margin: 1em $horizontal-margin-narrow;
+  }
+
   .card {
     min-width: 80%;
     min-height: 80%;
