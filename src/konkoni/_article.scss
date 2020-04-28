@@ -519,4 +519,10 @@ input:checked ~ .cw-container > .cw-text {
       }
     }
   }
+
+  .bottom-bar {
+    & > div:nth-child(2) {
+      margin: auto $horizontal-margin-narrow;
+    }
+  }
 }
