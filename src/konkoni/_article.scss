@@ -501,6 +501,10 @@ input:checked ~ .cw-container > .cw-text {
       > * {
 	margin: $margin-narrow;
       }
+
+      .likes, .reshares {
+        width: 50%;
+      }
     }
   }
 }
