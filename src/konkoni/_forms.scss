@@ -170,3 +170,11 @@ form > header {
     margin-left: 1em;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .split {
+    & > * {
+      max-width: none;
+    }
+  }
+}
