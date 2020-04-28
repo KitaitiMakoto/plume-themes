@@ -500,6 +500,7 @@ figure {
     }
     .comments > * { margin: auto 5%; }
     .comments .comment { padding: 2em 0px; }
+    .comments > p { text-align: left; }
   }
   main .article-info, main article, main h1.article, main h2.article {
     max-width: 90vw;
