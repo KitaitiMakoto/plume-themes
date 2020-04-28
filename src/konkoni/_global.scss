@@ -73,6 +73,10 @@ body > main > *, .h-feed > * {
   margin: 1em $horizontal-margin;
 }
 
+body > main > .split {
+  margin: 1em 0;
+}
+
 body > main > .h-entry, .h-feed {
   margin: 0;
 }
