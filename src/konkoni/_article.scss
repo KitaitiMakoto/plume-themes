@@ -490,3 +490,12 @@ input:checked ~ .cw-container > .cw-text {
     display: inline;
   }
 }
+
+@media screen and (max-width: 600px) {
+  main {
+    article {
+      margin-left: 1em;
+      margin-right: 1em;
+    }
+  }
+}
