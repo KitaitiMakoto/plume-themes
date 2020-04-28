@@ -497,5 +497,10 @@ input:checked ~ .cw-container > .cw-text {
       margin-left: 1em;
       margin-right: 1em;
     }
+    .article-meta {
+      > * {
+	margin: $margin-narrow;
+      }
+    }
   }
 }
