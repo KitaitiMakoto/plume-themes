@@ -146,6 +146,10 @@ form.new-post {
     flex-grow: 1;
     max-width: 40%;
   }
+
+  & > form {
+    margin: 1em;
+  }
 }
 
 header.center {
