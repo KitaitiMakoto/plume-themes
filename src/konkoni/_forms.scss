@@ -176,6 +176,10 @@ form > header {
 }
 
 @media screen and (max-width: 600px) {
+  header.center {
+    padding: 1em;
+  }
+
   .split {
     & > * {
       max-width: none;
