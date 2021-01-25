@@ -188,6 +188,8 @@ p.error {
    display: flex;
    flex-direction: column;
 
+   position: relative;
+
    min-width: 20em;
    min-height: 20em;
    margin: 1em;
@@ -230,16 +232,28 @@ p.error {
   }
 
   h3 {
-     margin: 0.75em 20px;
+     flex-grow: 1;
+     margin: 0;
      font-family: $playfair;
      font-size: 1.75em;
      font-weight: normal;
+     line-height: 1.75;
      a {
+       display: block;
        transition: color 0.1s ease-in;
        color: $text-color;
 
        &:hover { color: $primary; }
      }
+  }
+
+  .controls {
+    float: right;
+
+    .button {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
 
   main {
@@ -365,6 +379,7 @@ body > footer {
   justify-content: space-around;
   background: $primary;
   color: $primary-text-color;
+  margin-top: 5em;
 
   * {
     margin: 0;
