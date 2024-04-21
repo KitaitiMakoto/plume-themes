@@ -35,7 +35,7 @@ def def_theme_file_task(src_file)
   desc "Build #{theme} theme"
   task theme => [theme_file] + theme_assets
 
-  file theme_file  => [src_file, theme_dir, :setup] do |t|
+  file theme_file => [src_file, theme_dir, :setup] do |t|
     sh "#{RSASS} --style=compressed #{t.source} > #{t.name}"
   end
 
