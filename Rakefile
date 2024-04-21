@@ -48,7 +48,7 @@ desc "Setup build environment"
 task :setup => RSASS
 
 file RSASS do
-  sh "cargo install --features=commandline rsass"
+  sh "cargo install rsass-cli"
 end
 
 
