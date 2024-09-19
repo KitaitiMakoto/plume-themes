@@ -1,5 +1,8 @@
 image: kitaitimakoto/rsass-ruby
 
+variables:
+  RSASS: /usr/bin/rsass
+
 pages:
   script:
     - rake all
