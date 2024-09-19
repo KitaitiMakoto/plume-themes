@@ -71,6 +71,7 @@ Rake::PackageTask.new("plume-themes", ENV.fetch("CI_COMMIT_SHORT_SHA", :noversio
   t.need_tar_bz2 = true
   t.package_files.include(FileList["#{DEST}/**/*"])
 end
+task package: :all
 
 file "index.html" => Rake.application[:package].prerequisites do |t|
   template = ERB.new(<<~EOH)
