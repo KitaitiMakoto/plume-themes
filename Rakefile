@@ -1,4 +1,5 @@
 require "rake/clean"
+require "rake/packagetask"
 
 RSASS = ENV["RSASS"] || File.join(Dir.home, ".cargo/bin/rsass")
 
@@ -63,3 +64,11 @@ theme_tasks = THEMES.collect {|theme|
 }.flatten
 desc "Build all themes"
 task :all => theme_tasks
+
+PACKAGE_VERSION = "2024.09.19"
+Rake::PackageTask.new("plume-themes", PACKAGE_VERSION) do |t|
+  t.need_tar_gz = true
+  t.need_tar_bz2 = true
+  t.package_files.include(FileList["#{DEST}/**/*"])
+end
+task "pkg/plume-themes-#{PACKAGE_VERSION}" => theme_tasks
