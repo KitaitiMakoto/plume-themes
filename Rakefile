@@ -69,12 +69,14 @@ task :all => theme_tasks
 Rake::PackageTask.new("plume-themes", ENV.fetch("CI_COMMIT_SHORT_SHA", :noversion)) do |t|
   t.need_tar_gz = true
   t.need_tar_bz2 = true
-  t.package_files.include(FileList["#{DEST}/**/*"])
+  theme_tasks.each do |theme|
+    t.package_files.include(Rake.application[theme].prerequisites)
+  end
 end
 task package: :all
 
-file "index.html" => Rake.application[:package].prerequisites do |t|
-  files = t.sources.select { |f| File.file?(f) }
+file "index.html" => :package do |t|
+  files = Rake.application[t.source].prerequisites.select { |f| File.file?(f) }
   template = ERB.new(<<~EOH)
     <!doctype html>
     <head>
