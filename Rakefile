@@ -1,5 +1,6 @@
 require "rake/clean"
 require "rake/packagetask"
+require "erb"
 
 RSASS = ENV["RSASS"] || File.join(Dir.home, ".cargo/bin/rsass")
 
@@ -65,10 +66,26 @@ theme_tasks = THEMES.collect {|theme|
 desc "Build all themes"
 task :all => theme_tasks
 
-PACKAGE_VERSION = "2024.09.19"
-Rake::PackageTask.new("plume-themes", PACKAGE_VERSION) do |t|
+Rake::PackageTask.new("plume-themes", ENV.fetch("CI_COMMIT_SHORT_SHA", :noversion)) do |t|
   t.need_tar_gz = true
   t.need_tar_bz2 = true
   t.package_files.include(FileList["#{DEST}/**/*"])
 end
-task "pkg/plume-themes-#{PACKAGE_VERSION}" => theme_tasks
+
+file "index.html" => Rake.application[:package].prerequisites do |t|
+  template = ERB.new(<<~EOH)
+    <!doctype html>
+    <head>
+      <title>Plume themes</title>
+    </head>
+    <body>
+      <ul>
+        <% t.sources.each do |prereq| %>
+          <li><a href="<%= ERB::Util.h prereq %>"><%= ERB::Util.h prereq %></a></li>
+        <% end %>
+      </ul>
+    </body>
+  EOH
+  File.write t.name, template.result(binding)
+end
+CLEAN.include "index.html"
