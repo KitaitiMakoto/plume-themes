@@ -74,6 +74,7 @@ end
 task package: :all
 
 file "index.html" => Rake.application[:package].prerequisites do |t|
+  files = t.sources.select { |f| File.file?(f) }
   template = ERB.new(<<~EOH)
     <!doctype html>
     <head>
@@ -81,7 +82,7 @@ file "index.html" => Rake.application[:package].prerequisites do |t|
     </head>
     <body>
       <ul>
-        <% t.sources.each do |prereq| %>
+        <% files.each do |prereq| %>
           <li><a href="<%= ERB::Util.h prereq %>"><%= ERB::Util.h prereq %></a></li>
         <% end %>
       </ul>
