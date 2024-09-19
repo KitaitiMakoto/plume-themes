@@ -1,0 +1,9 @@
+image: kitaitimakoto/rsass-ruby
+
+pages:
+  script:
+    - rake all
+    - mv dist public
+  artifacts:
+    paths:
+        - public
