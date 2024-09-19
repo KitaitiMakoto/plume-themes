@@ -81,6 +81,7 @@ file "index.html" => Rake.application[:package].prerequisites do |t|
       <title>Plume themes</title>
     </head>
     <body>
+      <h1>Plume themes<h1>
       <ul>
         <% files.each do |prereq| %>
           <li><a href="<%= ERB::Util.h prereq %>"><%= ERB::Util.h prereq %></a></li>
