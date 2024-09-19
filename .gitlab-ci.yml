@@ -5,10 +5,11 @@ variables:
 
 pages:
   script:
-    - rake package
+    - rake index.html
     - mkdir public
     - mv dist public/
     - mv pkg public/
+    - mv index.html public/
   artifacts:
     paths:
       - public
